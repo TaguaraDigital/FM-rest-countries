@@ -1,0 +1,14 @@
+body{
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-areas: "header" 
+                        "image"
+                        "main";
+
+   @include table {
+      grid-template-columns: 2fr min-max(1fr,610px);
+         grid-template-areas: "header image" 
+                              "main image";
+
+   }
+}

@@ -1,0 +1,67 @@
+
+.hero {
+   grid-area: hero;
+}
+
+.main {
+   grid-area: main;
+   padding: 2rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+   // background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+   @include table {
+      padding: 0 10rem;
+   }
+}
+
+.main-title {
+   padding: 2rem 0;
+   font-size: 2.5rem;
+   font-weight: 600;
+   line-height: 1;
+   letter-spacing: 5px;
+   text-transform: uppercase;
+   text-align: center;
+   color: var(--dark-grayish-red);
+
+   @include table{
+      border: 1px solid olivedrab;
+      font-size: 4rem;
+      font-weight: 300;
+      text-align: left;
+   }
+}
+
+.main-txt{
+   text-align: center;
+   font-size: .8125rem;
+   line-height: 1.5;
+}
+.desaturated-red {
+   color: var(--desaturated-red);
+}
+
+.form {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.form__email{
+   width: 100%;
+   padding: 1rem;
+   border:1px solid olive;
+   border-radius: 25px;
+}
+
+.error-img {
+   width: 20px;
+   display: none;
+}
+
+
+

@@ -1,0 +1,38 @@
+*,
+*::after,
+*::before{
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+html{
+   scroll-behavior: smooth;
+}
+
+body{
+   margin: 0 auto; 
+   font-family: var(--ff-body);
+   font-size: 16px;
+   width: 100%;
+   // max-width: 1200px;
+}
+
+img{
+   width: 100%;
+   height: auto;
+   display: block;
+}
+
+ul{
+   padding: 0;
+   margin: 0;
+}
+
+li{
+   list-style: none;
+}
+
+a{
+   text-decoration: none;
+}

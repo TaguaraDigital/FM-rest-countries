@@ -1,0 +1,39 @@
+
+:root {
+/* ===============  Colors  =============*/
+--bg-clr:  hsl(207, 26%, 17%); // Very Dark Blue (Dark Mode Background)
+--txt-clr:  hsl(0, 0%, 100%);
+--dark-blue: hsl(209, 23%, 22%); // (Dark Mode Elements)
+
+.ligh-mode{
+   --bg-clr: hsl(0, 0%, 98%); // (Light Mode Background)
+   --txt-clr: hsl(200, 15%, 8%); // (Light Mode Text)
+   --dark-gray: hsl(0, 0%, 52%); // (Light Mode Input)
+}
+
+- Linear, 135deg, from hsl(0, 0%, 100%), to hsl(0, 100%, 98%)
+- Linear, 135deg, from hsl(0, 80%, 86%), to hsl(0, 74%, 74%)
+
+*/
+
+/* ===============  Fonts  =============*/
+   --ff-title: 'Josefin Sans', sans-serif;
+   --ff-body: 'Josefin Sans', sans-serif;
+   --fw-small: 300;
+   --fw-normal: 400;
+   --fw-bold: 600;
+
+// mobile view   
+   --fs-title-mobile: 1.625rem;
+   --fs-subtitle-mobile: 1.375rem;  
+   --fs-txt-mobile: .8125rem;
+
+   // --fs-txt-table:   
+   // --fs-txt-toptable:
+   --fs-base:16px;
+   
+
+/* ===============  Others  =============*/
+   --time-animation: 1s;
+   --header-height: 100px;
+}
