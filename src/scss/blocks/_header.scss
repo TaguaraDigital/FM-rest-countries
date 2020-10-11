@@ -10,13 +10,23 @@
    
    background: var( --bg-element);
    color: var(--txt-clr);
+   
+   @include table {
+      padding: 0 80px;
+   }
 }
 
 .title{
    margin: 0;
    padding: 0;
    font-size: 14px;
-   font-weight: bold;
+   font-weight: var(--fw-bold);
+   
+   @include table {
+      font-size: 24px;
+   }
+
+
 }
 
 .dark-mode{
@@ -24,7 +34,11 @@
    justify-content: space-between;
    align-items: center;
    font-size: 12px;
-   font-weight: bold;
+   font-weight: var(--fw-normal);
+
+   @include table {
+      font-size: 16px;
+   }
 
    p{
       margin: 0;
