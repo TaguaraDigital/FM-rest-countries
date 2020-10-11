@@ -11,11 +11,14 @@ html{
 }
 
 body{
-   margin: 0 auto; 
-   font-family: var(--ff-body);
-   font-size: (--fs-base);
    width: 100%;
    // max-width: 1200px;
+   margin: 0 auto; 
+
+   font-family: var(--ff-body);
+   font-size: (--fs-base);
+
+   background: var(--bg-clr);
 }
 
 img{

@@ -10,10 +10,10 @@
    
    background: var( --bg-element);
    color: var(--txt-clr);
-   
-   @include table {
-      padding: 0 80px;
-   }
+      
+      @include table {
+         padding: 0 80px;
+      }
 }
 
 .title{
