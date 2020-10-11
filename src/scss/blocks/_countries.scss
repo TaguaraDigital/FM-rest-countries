@@ -1,0 +1,11 @@
+
+.countries{
+   display: grid;
+   grid-template-columns: 1fr;
+   margin: 0 15px;
+   
+   @include table {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 80px 36px;
+   }
+}

@@ -1,0 +1,28 @@
+.country {
+    width: 265px;
+    height: 375px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    color: var(--txt-clr);
+    background: var(--bg-element);
+
+    border-radius: 5px;
+}
+
+.country__flat{
+    padding: 0;
+    margin: 0;
+    display: block;
+    width: 100%;
+    background: chartreuse;
+}
+
+.country__info {
+    height: 175px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
