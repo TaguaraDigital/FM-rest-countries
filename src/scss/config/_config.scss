@@ -3,12 +3,12 @@
 /* ===============  Colors  =============*/
 --bg-clr:  hsl(207, 26%, 17%); // Very Dark Blue (Dark Mode Background)
 --txt-clr:  hsl(0, 0%, 100%);
---dark-blue: hsl(209, 23%, 22%); // (Dark Mode Elements)
+--bg-element: hsl(209, 23%, 22%); // (Dark Mode Elements)
 
 .ligh-mode{
    --bg-clr: hsl(0, 0%, 98%); // (Light Mode Background)
    --txt-clr: hsl(200, 15%, 8%); // (Light Mode Text)
-   --dark-gray: hsl(0, 0%, 52%); // (Light Mode Input)
+   --bg-element: hsl(0, 0%, 52%); // (Light Mode Input)
 }
 
 /* ===============  Fonts  =============*/
