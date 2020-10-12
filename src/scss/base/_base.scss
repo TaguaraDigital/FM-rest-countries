@@ -16,7 +16,7 @@ body{
    margin: 0 auto; 
 
    font-family: var(--ff-body);
-   font-size: (--fs-base);
+   font-size: var(--fs-base);
 
    background: var(--bg-clr);
 }

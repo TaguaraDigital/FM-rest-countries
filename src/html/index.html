@@ -24,14 +24,23 @@
       <input type="search" placeholder="Search for a country...">
     </div>
     
-    <select class="search__region" id="region">
-      <option value="default">Filter by Region</option>
-      <option value="Africa">Africa</option>
-      <option value="America">America</option>
-      <option value="Asia">Asia</option>
-      <option value="Europa">Europa</option>
-      <option value="Ocenia">Oeania</option>
-    </select>
+    <div class="search__region selectbox" id="region">
+          
+      <div class="select" id="select">
+        <p class="region-select" id="region-select">Filter by Region</p>
+        <i class="fas fa-angle-down"></i>
+      </div>
+
+      <div class="options" id="options">
+        <p class="option" id="africa">Africa</p>
+        <p class="option" id="america">America</p>
+        <p class="option" id="asia">Asia</p>
+        <p class="option" id="europa">Europa</p>
+        <p class="option" id="oceania">Oceania</p>
+      </div>
+    
+    </div>
+
   </form>
 
 
