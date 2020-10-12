@@ -11,10 +11,24 @@
    justify-content: flex-start;
    align-items: center;
    
-   background: var(--bg-element);
-   border-radius: 5px;
    font-size: 15px;
-   font-weight: var(--fw-normal);
+   font-weight: var(--fw-small);
+
+   background: var(--bg-element);
+   color: var(--txt-clr);
+   border-radius: 5px;
+   
+   input {
+      padding: 15px;
+      background: none;
+      outline: none;
+      border: none;
+      color: var(--txt-clr);
+      
+      &::placeholder{
+         color: var(--txt-clr);
+      }
+   }
 }
 
 .search__region{

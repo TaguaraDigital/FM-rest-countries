@@ -17,67 +17,27 @@
     </div>
   </header>
   
-  <main>
-  
-    <form class="search"> 
+  <form class="search"> 
 
-      <div class="search__input">
-        <input type="text" placeholder="Search for a country">
-      </div>
-      
-      <select class="search__region" id="region">
-        <option value="default">Filter by Region</option>
-        <option value="Africa">Africa</option>
-        <option value="America">America</option>
-        <option value="Asia">Asia</option>
-        <option value="Europa">Europa</option>
-        <option value="Ocenia">Oeania</option>
-      </select>
-    </form>
-
-    <div class="countries">
-      <div class="country">
-        <img class="country__flat" src="https://restcountries.eu/data/col.svg" alt="">
-        <div class="country__info">
-          <h3 class="country__name">Colombia</h3>
-          <p class="country__population"><span class="bold">Populations:</span> Populations: 71.999.999</p>
-          <p class="country__region"><span class="bold">Region:</span> America</p>
-          <p class="country__capital"><span class="bold">Capital:</span> Bogota</p>
-        </div>
-      </div>
-
-      <div class="country">
-        <img class="country__flat" src="https://restcountries.eu/data/arg.svg" alt="">
-        <div class="country__info">
-          <h3 class="country__name">Argentina</h3>
-          <p class="country__population"><span class="bold">Populations:</span> Populations: 71.999.999</p>
-          <p class="country__region"><span class="bold">Region:</span> America</p>
-          <p class="country__capital"><span class="bold">Capital:</span> Buenos Aires</p>
-        </div>
-      </div>
-
-      <div class="country">
-        <img class="country__flat" src="https://restcountries.eu/data/ven.svg" alt="">
-        <div class="country__info">
-          <h3 class="country__name">Venezuela</h3>
-          <p class="country__population"><span class="bold">Populations:</span> Populations: 71.999.999</p>
-          <p class="country__region"><span class="bold">Region:</span> America</p>
-          <p class="country__capital"><span class="bold">Capital:</span> Caracas</p>
-        </div>
-      </div>
-
-      <div class="country">
-        <img class="country__flat" src="https://restcountries.eu/data/bra.svg" alt="">
-        <div class="country__info">
-          <h3 class="country__name">Brasil</h3>
-          <p class="country__population"><span class="bold">Populations:</span> Populations: 206.999.999</p>
-          <p class="country__region"><span class="bold">Region:</span> America</p>
-          <p class="country__capital"><span class="bold">Capital:</span> Brasilia</p>
-        </div>
-      </div>
-
-
+    <div class="search__input">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input type="search" placeholder="Search for a country...">
     </div>
+    
+    <select class="search__region" id="region">
+      <option value="default">Filter by Region</option>
+      <option value="Africa">Africa</option>
+      <option value="America">America</option>
+      <option value="Asia">Asia</option>
+      <option value="Europa">Europa</option>
+      <option value="Ocenia">Oeania</option>
+    </select>
+  </form>
+
+
+  <main>
+ 
+    <section class="countries" id="countries"></section>
   </main>
 
 
