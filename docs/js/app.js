@@ -4,32 +4,6 @@ const select = document.getElementById('select')
 const regionSelect = document.getElementById('region-select')
 const options = document.getElementById('options')
 
-// select.addEventListener('click', (e) => {
-//     options.classList.toggle('show')
-// })
-
-// find by region
-region.addEventListener('click', (e) => {
-    options.classList.toggle('show')
-    let url = 'https://restcountries.eu/rest/v2/all';
-    
-    if(e.target.id !== 'select' && e.target.id !== 'region-select' ){
-        
-        if (e.target.id === 'all-region'){
-            regionSelect.innerHTML = 'Filter by Region'
-            document.getElementById('all-region').classList.add('hidden')
-        } else{
-            document.getElementById('all-region').classList.remove('hidden')
-            regionSelect.innerHTML = e.target.innerHTML
-            url = `https://restcountries.eu/rest/v2/region/${e.target.id}`
-        }
-        renderCountries(url)    
-    }
-    e.preventDefault()
-})
-/***** Select Region Custom Select End *****/
-
-
 /***** Dark Mode  Begin*****/
 const darkModeSwitch = document.getElementById("dark-mode");
 let lightMode = (localStorage.getItem("lightMode") === "true") ? true : false
@@ -73,7 +47,7 @@ const getCountries = async (userURL = '') => {
 const renderCountries = async (url) => {
     const results = await getCountries(url);
 
-    if (results) {
+    if (results.length > 0 ) {
 
         const fragment = document.createDocumentFragment()
         results.forEach(country => {
@@ -84,9 +58,9 @@ const renderCountries = async (url) => {
                 <img class="country__flag" src=${country.flag} alt="${country.name} - flag">
                 <div class="country__info">
                     <h3 class="country__name">${country.name}</h3>
-                    <p class="country__population"><span class="bold">Populations:</span>${country.population} </p>
-                    <p class="country__region"><span class="bold">Region:</span>${country.region} </p>
-                    <p class="country__capital"><span class="bold">Capital:</span> ${country.capital}</p>
+                    <p class="country__data"><span class="bold">Populations: </span>${country.population} </p>
+                    <p class="country__data"><span class="bold">Region: </span>${country.region} </p>
+                    <p class="country__data"><span class="bold">Capital: </span> ${country.capital}</p>
                 </div>
             `
             fragment.appendChild(article) 
@@ -96,18 +70,39 @@ const renderCountries = async (url) => {
         countries.appendChild(fragment);
     
     } else {
-        countries.innerHTML = `<h2>There are no contries for your search</h2>`;
+        countries.innerHTML = `<h2 class="search__error">There are no countries for your search of "${searchInput.value}"</h2>`;
     }
 
 
 }
 
-
-const filterByName = (filter) => {
+// find by region
+region.addEventListener('click', (e) => {
+    options.classList.toggle('show')
+    let url = 'https://restcountries.eu/rest/v2/all';
     
+    if(e.target.id !== 'select' && e.target.id !== 'region-select' ){
+        
+        if (e.target.id === 'all-region'){
+            regionSelect.innerHTML = 'Filter by Region'
+            document.getElementById('all-region').classList.add('hidden')
+        } else{
+            document.getElementById('all-region').classList.remove('hidden')
+            regionSelect.innerHTML = e.target.innerHTML
+            url = `https://restcountries.eu/rest/v2/region/${e.target.id}`
+        }
+        renderCountries(url)    
+    }
+    e.preventDefault()
+})
+
+
+
+// search by name
+const filterByName = (filter) => {
     if (filter.length >= 3){
-        const countries = `https://restcountries.eu/rest/v2/name/${filter}`
-        renderCountries(countries)        
+        const url = `https://restcountries.eu/rest/v2/name/${filter}`
+        renderCountries(url)        
     }
 }
 
@@ -116,7 +111,8 @@ searchInput.addEventListener('keyup', (e) => {
     filterByName(searchInput.value)
 })
 
+// On load, look for the same countries shown in the challenge
 window.addEventListener ('load', () => {
-    const urlBloc = "https://restcountries.eu/rest/v2/regionalbloc/USAN";
-    renderCountries(urlBloc)
+    const url = 'https://restcountries.eu/rest/v2/alpha?codes=de;us;br;is;af;ax;al;dz';
+    renderCountries(url)
 });

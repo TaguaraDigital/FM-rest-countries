@@ -37,7 +37,11 @@
       border: none;
       color: var(--txt-clr);
       
-      &::placeholder{
+      &::placeholder,
+      &:focus,
+      &:active {
+         width: 100%;
+         background: none;
          color: var(--txt-clr);
       }
    }
@@ -120,6 +124,15 @@
    &:hover {
       background: var(--bg-clr);
    }
+}
+
+.search__error {
+   font-size: 1.5rem;
+   background: var(--bg-element);
+   color: var(--txt-clr);
+   text-align: center;
+   padding: 2rem;
+   margin: 0 2rem;
 }
 
 .hidden {

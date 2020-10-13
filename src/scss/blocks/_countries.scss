@@ -1,7 +1,7 @@
 
 .countries{
    width: 100%;
-   top: 18rem;
+   top: 16rem;
    // max-width: 1200px;
    position: absolute;
    left: auto;
@@ -12,8 +12,8 @@
    z-index: -1;
    
    @include table {
-      top: 14rem;
-      padding: 0 40px;
+      top: 13rem;
+      padding: 0 20px;
       grid-template-columns: repeat(4, 1fr);
       gap: 40px 0;
    }
