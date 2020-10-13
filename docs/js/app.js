@@ -1,9 +1,56 @@
-const countries = document.getElementById('countries');
-const URL = 'https://restcountries.eu/rest/v2/all'
+/***** Select Region Custom Select  Begin *****/
+const select = document.getElementById('select')
+const regionSelect = document.getElementById('region-select')
+const options = document.getElementById('options')
 
-const getCountries = async () => {
+select.addEventListener('click', (e) => {
+    options.classList.toggle('show')
+})
+
+// find by region
+options.addEventListener('click', (e) => {
+    regionSelect.innerHTML = e.target.innerHTML
+    options.classList.toggle('show')
+    const urlRegion = `https://restcountries.eu/rest/v2/region/${e.target.id}`
+    renderCountries(urlRegion)
+    e.preventDefault()
+})
+/***** Select Region Custom Select End *****/
+
+
+/***** Dark Mode  Begin*****/
+const darkModeSwitch = document.getElementById("dark-mode");
+let lightMode = (localStorage.getItem("lightMode") === "true") ? true : false
+
+const isDarktMode = () => {
+    document.body.classList.remove('ligh-mode');
+    localStorage.setItem("lightMode", "false");
+}
+const isLightMode = () => {
+    localStorage.setItem("lightMode", "true");
+    document.body.classList.add('ligh-mode');
+}
+
+if(lightMode){
+    isLightMode() 
+} 
+
+darkModeSwitch.addEventListener("click", () => {
+    lightMode = !lightMode
+    lightMode ? isLightMode() : isDarktMode();
+})
+/***** Dark Mode  End*****/
+
+/***** Main App Begin*****/
+const countries = document.getElementById('countries');
+const search = document.getElementById('search')
+const searchInput = document.getElementById('search-input')
+    
+
+const getCountries = async (userURL = '') => {
+    const url = userURL || 'https://restcountries.eu/rest/v2/all';
     try {
-        const results = await fetch (URL)
+        const results = await fetch (url)
         const data = await results.json();
         return data;
     } catch (err) {
@@ -11,8 +58,8 @@ const getCountries = async () => {
     }
 }
 
-const renderCountries = async () => {
-    const results = await getCountries();
+const renderCountries = async (url) => {
+    const results = await getCountries(url);
 
     if (results) {
 
@@ -33,6 +80,7 @@ const renderCountries = async () => {
             fragment.appendChild(article) 
         })
 
+        countries.innerHTML = "";
         countries.appendChild(fragment);
     
     } else {
@@ -42,38 +90,21 @@ const renderCountries = async () => {
 
 }
 
-window.addEventListener ('load', renderCountries);
 
-const darkModeSwitch = document.getElementById("dark-mode");
-let lightMode = (localStorage.getItem("lightMode") === "true") ? true : false
-
-const isDarktMode = () => {
-   document.body.classList.remove('ligh-mode');
-   localStorage.setItem("lightMode", "false");
-}
-const isLightMode = () => {
-   localStorage.setItem("lightMode", "true");
-   document.body.classList.add('ligh-mode');
+const filterByName = (filter) => {
+    
+    if (filter.length >= 3){
+        const countries = `https://restcountries.eu/rest/v2/name/${filter}`
+        renderCountries(countries)        
+    }
 }
 
-if(lightMode){
-   isLightMode() 
-} 
-
-darkModeSwitch.addEventListener("click", () => {
-   lightMode = !lightMode
-   lightMode ? isLightMode() : isDarktMode();
+searchInput.addEventListener('keyup', (e) => {
+    e.preventDefault()
+    filterByName(searchInput.value)
 })
 
-const select = document.getElementById('select')
-const regionSelect = document.getElementById('region-select')
-const options = document.getElementById('options')
-
-select.addEventListener('click', (e) => {
-    options.classList.toggle('show')
-})
-
-options.addEventListener('click', (e) => {
-    regionSelect.innerHTML = e.target.innerHTML
-    options.classList.toggle('show')
- })
+window.addEventListener ('load', () => {
+    const urlBloc = "https://restcountries.eu/rest/v2/regionalbloc/USAN";
+    renderCountries(urlBloc)
+});

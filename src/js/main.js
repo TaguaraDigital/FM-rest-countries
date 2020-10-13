@@ -1,4 +1,7 @@
 const countries = document.getElementById('countries');
+const search = document.getElementById('search')
+console.log(search)
+    
 const URL = 'https://restcountries.eu/rest/v2/all'
 
 const getCountries = async () => {
