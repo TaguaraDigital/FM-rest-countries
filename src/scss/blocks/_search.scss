@@ -91,6 +91,7 @@
 .fa-angle-down {
    font-size: 1rem;
    color: var(--txt-clr);
+   pointer-events: none;
 }
 
 .options {
@@ -119,4 +120,8 @@
    &:hover {
       background: var(--bg-clr);
    }
+}
+
+.hidden {
+   display: none;
 }

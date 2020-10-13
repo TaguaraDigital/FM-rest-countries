@@ -1,18 +1,30 @@
 /***** Select Region Custom Select  Begin *****/
+const region = document.getElementById('region')
 const select = document.getElementById('select')
 const regionSelect = document.getElementById('region-select')
 const options = document.getElementById('options')
 
-select.addEventListener('click', (e) => {
-    options.classList.toggle('show')
-})
+// select.addEventListener('click', (e) => {
+//     options.classList.toggle('show')
+// })
 
 // find by region
-options.addEventListener('click', (e) => {
-    regionSelect.innerHTML = e.target.innerHTML
+region.addEventListener('click', (e) => {
     options.classList.toggle('show')
-    const urlRegion = `https://restcountries.eu/rest/v2/region/${e.target.id}`
-    renderCountries(urlRegion)
+    let url = 'https://restcountries.eu/rest/v2/all';
+    
+    if(e.target.id !== 'select' && e.target.id !== 'region-select' ){
+        
+        if (e.target.id === 'all-region'){
+            regionSelect.innerHTML = 'Filter by Region'
+            document.getElementById('all-region').classList.add('hidden')
+        } else{
+            document.getElementById('all-region').classList.remove('hidden')
+            regionSelect.innerHTML = e.target.innerHTML
+            url = `https://restcountries.eu/rest/v2/region/${e.target.id}`
+        }
+        renderCountries(url)    
+    }
     e.preventDefault()
 })
 /***** Select Region Custom Select End *****/
