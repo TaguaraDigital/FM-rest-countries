@@ -6,7 +6,7 @@ const options = document.getElementById('options')
 
 /***** Dark Mode  Begin*****/
 const darkModeSwitch = document.getElementById("dark-mode");
-let lightMode = (localStorage.getItem("lightMode") === "true") ? true : false
+let lightMode = (localStorage.getItem("lightMode") === "false") ? false : true
 
 const isDarktMode = () => {
     document.body.classList.remove('ligh-mode');
