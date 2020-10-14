@@ -22,6 +22,11 @@ darkModeSwitch.addEventListener("click", () => {
 })
 /***** Dark Mode  End*****/
 
+/***** Format numbers Begin*****/
+const numberWithDot = (number) => new Intl.NumberFormat('es-Es').format(number);  
+/***** Format numbers End*****/
+
+
 
 /***** render detail of de country Begin*****/
 
@@ -47,7 +52,7 @@ const getDetailCountry = async (country) => {
             <div class="detail__info">
                 <h2 class="detail__title"> ${data.name}</h2>
                 <p class="detail__data"><span class="bold">Native Name: </span> ${data.nativeName} </p>
-                <p class="detail__data"><span class="bold">Population: </span> ${data.population} </p>
+                <p class="detail__data"><span class="bold">Population: </span> ${numberWithDot(data.population)} </p>
                 <p class="detail__data"><span class="bold">Region: </span> ${data.region} </p>
                 <p class="detail__data"><span class="bold">Sub Region: </span> ${data.subregion} </p>
                 <p class="detail__data"><span class="bold">Capital: </span> ${data.capital} </p>

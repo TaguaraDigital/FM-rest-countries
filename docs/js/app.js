@@ -29,6 +29,11 @@ darkModeSwitch.addEventListener("click", () => {
 /***** Dark Mode  End*****/
 
 
+/***** Format numbers Begin*****/
+const numberWithDot = (number) => new Intl.NumberFormat('es-Es').format(number);  
+/***** Format numbers End*****/
+
+
 /***** Main App Begin*****/
 
 const getCountries = async (userURL = '') => {
@@ -58,7 +63,7 @@ const renderCountries = async (url) => {
                 <img class="country__flag" src=${country.flag} alt="${country.name} - flag">
                 <div class="country__info">
                     <h3 class="country__name">${country.name}</h3>
-                    <p class="country__data"><span class="bold">Populations: </span>${country.population} </p>
+                    <p class="country__data"><span class="bold">Populations: </span>${numberWithDot(country.population)} </p>
                     <p class="country__data"><span class="bold">Region: </span>${country.region} </p>
                     <p class="country__data"><span class="bold">Capital: </span> ${country.capital}</p>
                 </div>
