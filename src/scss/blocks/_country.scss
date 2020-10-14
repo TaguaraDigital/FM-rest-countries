@@ -30,11 +30,14 @@
     font-size: 18px;
     font-weight: var(--fw-bold);
     margin-bottom: .5rem;
+    pointer-events: none;
 }
 
 .country__data {
-    line-height: 1.rem;
+    line-height: 1.5rem;
+    pointer-events: none;
 }
 .bold{
     font-weight: var(--fw-bold);
+    pointer-events: none;
 }

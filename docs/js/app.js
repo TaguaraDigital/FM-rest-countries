@@ -3,6 +3,7 @@ const region = document.getElementById('region')
 const select = document.getElementById('select')
 const regionSelect = document.getElementById('region-select')
 const options = document.getElementById('options')
+const detail = document.getElementById('detail')
 
 /***** Dark Mode  Begin*****/
 const darkModeSwitch = document.getElementById("dark-mode");
@@ -50,10 +51,12 @@ const renderCountries = async (url) => {
     if (results.length > 0 ) {
 
         const fragment = document.createDocumentFragment()
+
         results.forEach(country => {
             
             const article = document.createElement('article');
             article.classList.add('country');
+            article.id = country.alpha3Code;
             article.innerHTML = `
                 <img class="country__flag" src=${country.flag} alt="${country.name} - flag">
                 <div class="country__info">
@@ -74,6 +77,50 @@ const renderCountries = async (url) => {
     }
 
 
+}
+// get detail Country
+const getDetailCountry = async (country) => {
+    const url = `https://restcountries.eu/rest/v2/alpha/${country}`;
+    try {
+        const results = await fetch (url)
+        const data = await results.json();
+
+        console.log('Pais: ', country, data)
+
+        let languages = '';
+        data.languages.forEach(lang => {
+            languages += `${lang.name}, `
+        })
+
+        let borders = '';
+        data.borders.forEach(border => {
+            borders += `<button class="btn">${border}</button>`
+        })
+
+
+        console.log(data.currencies[0].name)
+    
+        detail.innerHTML = `
+            <img class="country__flag" src=${data.flag} alt="${data.name} flag">
+            <div class="country__info">
+                <h2 class="country__name"> ${data.name}</h2>
+                <p class="country__data"><span class="bold">Native Name: </span> ${data.nativeName} </p>
+                <p class="country__data"><span class="bold">Population: </span> ${data.population} </p>
+                <p class="country__data"><span class="bold">Region: </span> ${data.region} </p>
+                <p class="country__data"><span class="bold">Sub Region: </span> ${data.subregion} </p>
+                <p class="country__data"><span class="bold">Capital: </span> ${data.capital} </p>
+                <p class="country__data"><span class="bold">Top Level Domain: </span> ${data.toplevelDomain} </p>
+                <p class="country__data"><span class="bold">Currencies: </span> ${data.currencies[0].name} </p>
+                <p class="country__data"><span class="bold">Languages: </span> ${languages} </p>
+        
+                <h3 class="country__name"> Border Countries: </h3>
+        
+                <div class="borders"> ${borders}</div>
+            </div>
+        `
+    } catch (err) {
+        console.log ('Ups.. there is an errors :( ', err )
+    }
 }
 
 // find by region
@@ -116,3 +163,10 @@ window.addEventListener ('load', () => {
     const url = 'https://restcountries.eu/rest/v2/alpha?codes=de;us;br;is;af;ax;al;dz';
     renderCountries(url)
 });
+
+// click on one country find details
+countries.addEventListener('click', (e) => {
+    e.preventDefault();
+    detail.classList.remove('hidden')
+    getDetailCountry(e.target.parentElement.id)
+})
