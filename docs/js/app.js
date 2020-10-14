@@ -125,5 +125,5 @@ countries.addEventListener('click', (e) => {
     e.preventDefault();
     // location.href = `detail.html/:?${e.target.parentElement.id}`;
     localStorage.setItem("country", e.target.parentElement.id);
-    location.href = `/detail.html#${e.target.parentElement.id}`;
+    location.href = `./detail.html#${e.target.parentElement.id}`;
  })
