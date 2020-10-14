@@ -1,26 +1,26 @@
-/***** Select Region Custom Select  Begin *****/
 const region = document.getElementById('region')
 const select = document.getElementById('select')
 const regionSelect = document.getElementById('region-select')
 const options = document.getElementById('options')
 const detail = document.getElementById('detail')
+const countries = document.getElementById('countries');
+const search = document.getElementById('search')
+const searchInput = document.getElementById('search-input')
 
 /***** Dark Mode  Begin*****/
 const darkModeSwitch = document.getElementById("dark-mode");
 let lightMode = (localStorage.getItem("lightMode") === "false") ? false : true
 
 const isDarktMode = () => {
-    document.body.classList.remove('ligh-mode');
+    document.body.classList.add('dark-mode');
     localStorage.setItem("lightMode", "false");
 }
 const isLightMode = () => {
     localStorage.setItem("lightMode", "true");
-    document.body.classList.add('ligh-mode');
+    document.body.classList.remove('dark-mode');
 }
 
-if(lightMode){
-    isLightMode() 
-} 
+if(lightMode){isLightMode()} 
 
 darkModeSwitch.addEventListener("click", () => {
     lightMode = !lightMode
@@ -28,11 +28,8 @@ darkModeSwitch.addEventListener("click", () => {
 })
 /***** Dark Mode  End*****/
 
+
 /***** Main App Begin*****/
-const countries = document.getElementById('countries');
-const search = document.getElementById('search')
-const searchInput = document.getElementById('search-input')
-    
 
 const getCountries = async (userURL = '') => {
     const url = userURL || 'https://restcountries.eu/rest/v2/all';
@@ -75,52 +72,6 @@ const renderCountries = async (url) => {
     } else {
         countries.innerHTML = `<h2 class="search__error">There are no countries for your search of "${searchInput.value}"</h2>`;
     }
-
-
-}
-// get detail Country
-const getDetailCountry = async (country) => {
-    const url = `https://restcountries.eu/rest/v2/alpha/${country}`;
-    try {
-        const results = await fetch (url)
-        const data = await results.json();
-
-        console.log('Pais: ', country, data)
-
-        let languages = '';
-        data.languages.forEach(lang => {
-            languages += `${lang.name}, `
-        })
-
-        let borders = '';
-        data.borders.forEach(border => {
-            borders += `<button class="btn">${border}</button>`
-        })
-
-
-        console.log(data.currencies[0].name)
-    
-        detail.innerHTML = `
-            <img class="country__flag" src=${data.flag} alt="${data.name} flag">
-            <div class="country__info">
-                <h2 class="country__name"> ${data.name}</h2>
-                <p class="country__data"><span class="bold">Native Name: </span> ${data.nativeName} </p>
-                <p class="country__data"><span class="bold">Population: </span> ${data.population} </p>
-                <p class="country__data"><span class="bold">Region: </span> ${data.region} </p>
-                <p class="country__data"><span class="bold">Sub Region: </span> ${data.subregion} </p>
-                <p class="country__data"><span class="bold">Capital: </span> ${data.capital} </p>
-                <p class="country__data"><span class="bold">Top Level Domain: </span> ${data.toplevelDomain} </p>
-                <p class="country__data"><span class="bold">Currencies: </span> ${data.currencies[0].name} </p>
-                <p class="country__data"><span class="bold">Languages: </span> ${languages} </p>
-        
-                <h3 class="country__name"> Border Countries: </h3>
-        
-                <div class="borders"> ${borders}</div>
-            </div>
-        `
-    } catch (err) {
-        console.log ('Ups.. there is an errors :( ', err )
-    }
 }
 
 // find by region
@@ -145,7 +96,7 @@ region.addEventListener('click', (e) => {
 
 
 
-// search by name
+// filter search by name
 const filterByName = (filter) => {
     if (filter.length >= 3){
         const url = `https://restcountries.eu/rest/v2/name/${filter}`
@@ -164,9 +115,10 @@ window.addEventListener ('load', () => {
     renderCountries(url)
 });
 
-// click on one country find details
+// click on one country, look for details
 countries.addEventListener('click', (e) => {
     e.preventDefault();
-    detail.classList.remove('hidden')
-    getDetailCountry(e.target.parentElement.id)
+    // location.href = `detail.html/:?${e.target.parentElement.id}`;
+    localStorage.setItem("country", e.target.parentElement.id);
+    location.href = `detail.html`;
 })
