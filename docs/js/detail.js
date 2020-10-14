@@ -1,6 +1,5 @@
 const detail = document.getElementById('detail');
 const back = document.getElementById('btn-back');
-let country = localStorage.getItem('country');
 
 /***** Dark Mode  Begin*****/
 const darkModeSwitch = document.getElementById("dark-mode");
@@ -40,7 +39,7 @@ const getDetailCountry = async (country) => {
 
         let borders = '';
         data.borders.forEach(border => {
-            borders += `<button class="btn btn-border">${border}</button>`
+            borders += `<button class="btn btn-border" id=${border}>${border}</button>`
         })
 
         detail.innerHTML = `
@@ -58,7 +57,7 @@ const getDetailCountry = async (country) => {
         
                 <h3 class="detail__title"> Border Countries: </h3>
         
-                <div class="borders btn"> ${borders}</div>
+                <div class="borders btn" id="borders"> ${borders}</div>
             </div>
         `
     } catch (err) {
@@ -66,8 +65,16 @@ const getDetailCountry = async (country) => {
     }
 }
 
-getDetailCountry(country);
+getDetailCountry(location.hash.substring(1));
 
 back.addEventListener('click', (e) => {
-    location.href = `/` 
+    location.href = `./` 
+})
+
+
+detail.addEventListener('click', (e) => {
+    if(e.target.id !== '') {
+        console.log(e.target.id) 
+        getDetailCountry(e.target.id);
+    } 
 })
