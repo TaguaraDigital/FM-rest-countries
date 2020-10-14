@@ -37,6 +37,8 @@ const getDetailCountry = async (country) => {
         const results = await fetch (url)
         const data = await results.json();
 
+        console.log(data)
+
         let languages = '';
         data.languages.forEach(lang => {
             languages += `${lang.name}, `
@@ -56,7 +58,7 @@ const getDetailCountry = async (country) => {
                 <p class="detail__data"><span class="bold">Region: </span> ${data.region} </p>
                 <p class="detail__data"><span class="bold">Sub Region: </span> ${data.subregion} </p>
                 <p class="detail__data"><span class="bold">Capital: </span> ${data.capital} </p>
-                <p class="detail__data"><span class="bold">Top Level Domain: </span> ${data.toplevelDomain} </p>
+                <p class="detail__data"><span class="bold">Top Level Domain: </span> ${data.topLevelDomain} </p>
                 <p class="detail__data"><span class="bold">Currencies: </span> ${data.currencies[0].name} </p>
                 <p class="detail__data"><span class="bold">Languages: </span> ${languages} </p>
         
