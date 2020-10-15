@@ -7,11 +7,18 @@
     color: var(--txt-clr);
     background: var(--bg-element);
 
+    pointer-events: auto;
+    cursor: pointer;
     border-radius: 5px;
+
+    &:hover{
+        transform: scale(1.1);
+    }
 }
 
 .country__flag{
     width: 100%;
+    min-width: 265px;
     height: 100%;
     max-height: 160px;
     object-fit: cover;
