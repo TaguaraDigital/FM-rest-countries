@@ -51,19 +51,23 @@ const getDetailCountry = async (country) => {
 
         detail.innerHTML = `
             <img class="detail__flag" src=${data.flag} alt="${data.name} flag">
+            <h2 class="detail__title"> ${data.name}</h2>
             <div class="detail__info">
-                <h2 class="detail__title"> ${data.name}</h2>
-                <p class="detail__data"><span class="bold">Native Name: </span> ${data.nativeName} </p>
-                <p class="detail__data"><span class="bold">Population: </span> ${numberWithDot(data.population)} </p>
-                <p class="detail__data"><span class="bold">Region: </span> ${data.region} </p>
-                <p class="detail__data"><span class="bold">Sub Region: </span> ${data.subregion} </p>
-                <p class="detail__data"><span class="bold">Capital: </span> ${data.capital} </p>
-                <p class="detail__data mt-20"><span class="bold">Top Level Domain: </span> ${data.topLevelDomain} </p>
-                <p class="detail__data"><span class="bold">Currencies: </span> ${data.currencies[0].name} </p>
-                <p class="detail__data"><span class="bold">Languages: </span> ${languages} </p>
-        
+                <div class="block-1">
+                    <p class="detail__data"><span class="bold">Native Name: </span> ${data.nativeName} </p>
+                    <p class="detail__data"><span class="bold">Population: </span> ${numberWithDot(data.population)} </p>
+                    <p class="detail__data"><span class="bold">Region: </span> ${data.region} </p>
+                    <p class="detail__data"><span class="bold">Sub Region: </span> ${data.subregion} </p>
+                    <p class="detail__data"><span class="bold">Capital: </span> ${data.capital} </p>
+                </div>
+                <div class="block-2">
+                    <p class="detail__data mt-20"><span class="bold">Top Level Domain: </span> ${data.topLevelDomain} </p>
+                    <p class="detail__data"><span class="bold">Currencies: </span> ${data.currencies[0].name} </p>
+                    <p class="detail__data"><span class="bold">Languages: </span> ${languages} </p>
+                </div>
+            </div>
+            <div class="border">
                 <h3 class="detail__subtitle"> Border Countries: </h3>
-        
                 <div class="borders btn" id="borders"> ${borders}</div>
             </div>
         `
