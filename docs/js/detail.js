@@ -58,11 +58,11 @@ const getDetailCountry = async (country) => {
                 <p class="detail__data"><span class="bold">Region: </span> ${data.region} </p>
                 <p class="detail__data"><span class="bold">Sub Region: </span> ${data.subregion} </p>
                 <p class="detail__data"><span class="bold">Capital: </span> ${data.capital} </p>
-                <p class="detail__data"><span class="bold">Top Level Domain: </span> ${data.topLevelDomain} </p>
+                <p class="detail__data mt-20"><span class="bold">Top Level Domain: </span> ${data.topLevelDomain} </p>
                 <p class="detail__data"><span class="bold">Currencies: </span> ${data.currencies[0].name} </p>
                 <p class="detail__data"><span class="bold">Languages: </span> ${languages} </p>
         
-                <h3 class="detail__title"> Border Countries: </h3>
+                <h3 class="detail__subtitle"> Border Countries: </h3>
         
                 <div class="borders btn" id="borders"> ${borders}</div>
             </div>
